@@ -19,9 +19,9 @@
                 <div id="menu-jk" class="col-md-4">
                     <div class="pro-s-cover">
                         <img src="assets/images/profile.jpg" alt="">
-                        <h6>Denis Bell</h6>
-                        <span>Contractor</span>
-                        <p>Solution Architect</p>
+                        <h6>Denis Bell Jr</h6>
+                        <span>Contractor </span>
+                        <p>Solution Architect </p>
                         <div class="num-box w-100 d-flex">
                             <div class="hire">
                                 <b>55+</b> <br>
@@ -57,6 +57,10 @@
                         <div class="cd-ro row no-margin">
                             <span>Email Address</span>
                             <p><i class="fas fa-envelope-square"></i> denisdbell@gmail.com</p>
+                        </div>
+                        <div class="cd-ro row no-margin">
+                            <span>Visitors </span>
+                            <p id="visitorCount"><i class="fas fa-envelope-square"></i></p>
                         </div>
                     </div>
                 </div>
@@ -371,6 +375,27 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script type="application/javascript" src="assets/js/jquery-scrolltofixed-min.js"></script>
 <script src="assets/js/script.js"></script>
+<script>
+    $(document).ready(function() {
+        // Replace 'your_api_endpoint' with the actual API endpoint
+        var apiEndpoint = 'https://func-resume-api.azurewebsites.net/api/http_trigger?code=FeAxR0xniMoWRbYQr1WNdVSyMVVo1MPa_0ibGhciM8H9AzFuEcCNYw%3D%3D';
 
+        $.ajax({
+            url: apiEndpoint,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                // Assuming the response is in the format: {"visitors": [{"count": 12}]}
+                var count = response.visitors[0].count;
+                console.log('Visitor count:', count);
+                // You can also display this value in an HTML element
+                $('#visitorCount').text(count);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching data:', error);
+            }
+        });
+    });
+</script>
 
 </html>
